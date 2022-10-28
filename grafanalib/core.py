@@ -1601,7 +1601,6 @@ class TimeSeries(Panel):
         single (Default), multi, none
     :param unit: units
     :param thresholdsStyleMode: thresholds style mode off (Default), area, line, line+area
-    :param thresholds: thresholds
     """
 
     axisPlacement = attr.ib(default="auto", validator=instance_of(str))
@@ -1656,7 +1655,6 @@ class TimeSeries(Panel):
     tooltipMode = attr.ib(default="single", validator=instance_of(str))
     unit = attr.ib(default="", validator=instance_of(str))
     thresholdsStyleMode = attr.ib(default="off", validator=instance_of(str))
-    thresholds = attr.ib(default={}, validator=instance_of(dict))
 
     def to_json_data(self):
         return self.panel_json(
@@ -1689,7 +1687,6 @@ class TimeSeries(Panel):
                             "thresholdsStyle": {"mode": self.thresholdsStyleMode},
                         },
                         "mappings": self.mappings,
-                        "thresholds": self.thresholds,
                         "unit": self.unit,
                     },
                     "overrides": self.overrides,
